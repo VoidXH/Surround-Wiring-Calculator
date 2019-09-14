@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Surround Wiring Calculator")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Calculates optimal wirings for multiple speakers connected to a single amplifier, which is most common in the cinema.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("VoidX")]
 [assembly: AssemblyProduct("Surround Wiring Calculator")]
