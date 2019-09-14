@@ -14,16 +14,21 @@ namespace SurroundWiringCalc {
 
         void Consider(int[] plan) {
             double planImpedance = 0;
+            int diversity = 0;
             for (int i = 0; i < plan.Length; ++i) {
-                if (plan[i] == 0)
+                if (plan[i] == 0) {
+                    diversity = plan[0] - plan[i - 1];
                     break;
+                }
                 planImpedance += (double)speakerImpedance.Value / plan[i];
             }
             double matchDistance = Math.Abs((double)amplifierImpedance.Value - planImpedance);
+            if (matchDistance < (double)tolerance.Value)
+                matchDistance += diversity;
             if (matchDistance < bestMatchDistance) {
                 bestMatch = plan;
-                bestMatchDistance = matchDistance;
                 bestMatchImpedance = planImpedance;
+                bestMatchDistance = matchDistance;
             }
         }
 

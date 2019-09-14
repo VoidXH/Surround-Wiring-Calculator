@@ -37,11 +37,14 @@
             this.speakerCountLabel = new System.Windows.Forms.Label();
             this.wiringPlanInfo = new System.Windows.Forms.Label();
             this.voidx = new System.Windows.Forms.LinkLabel();
+            this.toleranceLabel = new System.Windows.Forms.Label();
+            this.tolerance = new System.Windows.Forms.NumericUpDown();
             this.settingsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.amplifierLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.amplifierImpedance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speakerImpedance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speakerCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tolerance)).BeginInit();
             this.SuspendLayout();
             // 
             // wiringPlan
@@ -58,6 +61,8 @@
             // settingsBox
             // 
             this.settingsBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingsBox.Controls.Add(this.tolerance);
+            this.settingsBox.Controls.Add(this.toleranceLabel);
             this.settingsBox.Controls.Add(this.systemCurrent);
             this.settingsBox.Controls.Add(this.systemImpedance);
             this.settingsBox.Controls.Add(this.systemVoltage);
@@ -71,7 +76,7 @@
             this.settingsBox.Controls.Add(this.speakerCountLabel);
             this.settingsBox.Location = new System.Drawing.Point(594, 12);
             this.settingsBox.Name = "settingsBox";
-            this.settingsBox.Size = new System.Drawing.Size(178, 180);
+            this.settingsBox.Size = new System.Drawing.Size(178, 203);
             this.settingsBox.TabIndex = 1;
             this.settingsBox.TabStop = false;
             this.settingsBox.Text = "Settings";
@@ -79,7 +84,7 @@
             // systemCurrent
             // 
             this.systemCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.systemCurrent.Location = new System.Drawing.Point(6, 159);
+            this.systemCurrent.Location = new System.Drawing.Point(6, 180);
             this.systemCurrent.Name = "systemCurrent";
             this.systemCurrent.Size = new System.Drawing.Size(166, 13);
             this.systemCurrent.TabIndex = 10;
@@ -89,7 +94,7 @@
             // systemImpedance
             // 
             this.systemImpedance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.systemImpedance.Location = new System.Drawing.Point(6, 125);
+            this.systemImpedance.Location = new System.Drawing.Point(6, 146);
             this.systemImpedance.Name = "systemImpedance";
             this.systemImpedance.Size = new System.Drawing.Size(166, 13);
             this.systemImpedance.TabIndex = 9;
@@ -99,7 +104,7 @@
             // systemVoltage
             // 
             this.systemVoltage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.systemVoltage.Location = new System.Drawing.Point(6, 142);
+            this.systemVoltage.Location = new System.Drawing.Point(6, 163);
             this.systemVoltage.Name = "systemVoltage";
             this.systemVoltage.Size = new System.Drawing.Size(166, 13);
             this.systemVoltage.TabIndex = 8;
@@ -151,7 +156,7 @@
             0,
             0,
             65536});
-            this.amplifierImpedance.Location = new System.Drawing.Point(116, 71);
+            this.amplifierImpedance.Location = new System.Drawing.Point(126, 71);
             this.amplifierImpedance.Maximum = new decimal(new int[] {
             32,
             0,
@@ -163,10 +168,10 @@
             0,
             0});
             this.amplifierImpedance.Name = "amplifierImpedance";
-            this.amplifierImpedance.Size = new System.Drawing.Size(56, 20);
+            this.amplifierImpedance.Size = new System.Drawing.Size(46, 20);
             this.amplifierImpedance.TabIndex = 5;
             this.amplifierImpedance.Value = new decimal(new int[] {
-            4,
+            6,
             0,
             0,
             0});
@@ -177,9 +182,9 @@
             this.amplifierImpedanceLabel.AutoSize = true;
             this.amplifierImpedanceLabel.Location = new System.Drawing.Point(6, 73);
             this.amplifierImpedanceLabel.Name = "amplifierImpedanceLabel";
-            this.amplifierImpedanceLabel.Size = new System.Drawing.Size(104, 13);
+            this.amplifierImpedanceLabel.Size = new System.Drawing.Size(114, 13);
             this.amplifierImpedanceLabel.TabIndex = 4;
-            this.amplifierImpedanceLabel.Text = "Amplifier impedance:";
+            this.amplifierImpedanceLabel.Text = "Target impedance (Ω):";
             // 
             // speakerImpedance
             // 
@@ -264,7 +269,40 @@
             this.voidx.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.voidx.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.VoidX_LinkClicked);
             // 
-            // Form1
+            // toleranceLabel
+            // 
+            this.toleranceLabel.AutoSize = true;
+            this.toleranceLabel.Location = new System.Drawing.Point(6, 125);
+            this.toleranceLabel.Name = "toleranceLabel";
+            this.toleranceLabel.Size = new System.Drawing.Size(76, 13);
+            this.toleranceLabel.TabIndex = 11;
+            this.toleranceLabel.Text = "Tolerance (Ω):";
+            // 
+            // tolerance
+            // 
+            this.tolerance.DecimalPlaces = 1;
+            this.tolerance.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.tolerance.Location = new System.Drawing.Point(88, 123);
+            this.tolerance.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.tolerance.Name = "tolerance";
+            this.tolerance.Size = new System.Drawing.Size(84, 20);
+            this.tolerance.TabIndex = 12;
+            this.tolerance.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.tolerance.ValueChanged += new System.EventHandler(this.Replan);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -273,7 +311,7 @@
             this.Controls.Add(this.wiringPlanInfo);
             this.Controls.Add(this.settingsBox);
             this.Controls.Add(this.wiringPlan);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Surround Wiring Calculator";
             this.settingsBox.ResumeLayout(false);
             this.settingsBox.PerformLayout();
@@ -281,6 +319,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.amplifierImpedance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speakerImpedance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speakerCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tolerance)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,5 +342,7 @@
         private System.Windows.Forms.Label systemCurrent;
         private System.Windows.Forms.Label wiringPlanInfo;
         private System.Windows.Forms.LinkLabel voidx;
+        private System.Windows.Forms.NumericUpDown tolerance;
+        private System.Windows.Forms.Label toleranceLabel;
     }
 }
