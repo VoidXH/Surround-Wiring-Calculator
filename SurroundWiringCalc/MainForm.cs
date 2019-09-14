@@ -1,10 +1,18 @@
-﻿using System;
+﻿using SurroundWiringCalc.Properties;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace SurroundWiringCalc {
     public partial class MainForm : Form {
-        public MainForm() => InitializeComponent();
+        public MainForm() {
+            InitializeComponent();
+            speakerImpedance.Value = Settings.Default.speakerImpedance;
+            targetImpedance.Value = Settings.Default.targetImpedance;
+            tolerance.Value = Settings.Default.tolerance;
+            amplifierLoad.Value = Settings.Default.amplifierLoad;
+            speakerCount.Value = Settings.Default.speakerCount;
+        }
 
         readonly static Color[] colors = new Color[] { Color.LightBlue, Color.LightGreen, Color.LightCoral, Color.LightSalmon, Color.LightGoldenrodYellow };
 
@@ -22,7 +30,7 @@ namespace SurroundWiringCalc {
                 }
                 planImpedance += (double)speakerImpedance.Value / plan[i];
             }
-            double matchDistance = Math.Abs((double)amplifierImpedance.Value - planImpedance);
+            double matchDistance = Math.Abs((double)targetImpedance.Value - planImpedance);
             if (matchDistance < (double)tolerance.Value)
                 matchDistance += diversity;
             if (matchDistance < bestMatchDistance) {
@@ -126,5 +134,14 @@ namespace SurroundWiringCalc {
         }
 
         void VoidX_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => System.Diagnostics.Process.Start("http://en.sbence.hu");
+
+        void Save(object sender, FormClosedEventArgs e) {
+            Settings.Default.speakerCount = speakerCount.Value;
+            Settings.Default.speakerImpedance = speakerImpedance.Value;
+            Settings.Default.targetImpedance = targetImpedance.Value;
+            Settings.Default.tolerance = tolerance.Value;
+            Settings.Default.amplifierLoad = amplifierLoad.Value;
+            Settings.Default.Save();
+        }
     }
 }

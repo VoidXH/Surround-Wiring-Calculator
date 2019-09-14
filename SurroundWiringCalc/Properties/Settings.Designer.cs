@@ -22,5 +22,65 @@ namespace SurroundWiringCalc.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal speakerCount {
+            get {
+                return ((decimal)(this["speakerCount"]));
+            }
+            set {
+                this["speakerCount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4.6")]
+        public decimal speakerImpedance {
+            get {
+                return ((decimal)(this["speakerImpedance"]));
+            }
+            set {
+                this["speakerImpedance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public decimal targetImpedance {
+            get {
+                return ((decimal)(this["targetImpedance"]));
+            }
+            set {
+                this["targetImpedance"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public decimal amplifierLoad {
+            get {
+                return ((decimal)(this["amplifierLoad"]));
+            }
+            set {
+                this["amplifierLoad"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public decimal tolerance {
+            get {
+                return ((decimal)(this["tolerance"]));
+            }
+            set {
+                this["tolerance"] = value;
+            }
+        }
     }
 }
